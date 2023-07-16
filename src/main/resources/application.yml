@@ -2,7 +2,13 @@ spring.data.mongodb.uri: mongodb://localhost:27017/transactions
 
 server:
   port: 9001
+
 spring:
+  batch:
+    initializer:
+      enabled: false
+    job:
+      enabled: false
   jpa:
     hibernate:
       ddl-auto: update
