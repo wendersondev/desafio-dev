@@ -5,7 +5,6 @@ import com.desafio.dev.domain.read.TransactionsRead;
 import com.desafio.dev.domain.writer.TransactionsWriter;
 import com.desafio.dev.job.TransactionStepListener;
 import com.desafio.dev.job.TransactionsJobListener;
-import com.desafio.dev.utils.ConstantsUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

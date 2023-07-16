@@ -6,6 +6,7 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,9 +14,21 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class TransactionsRead implements ItemReader<String> {
 
+    @Autowired
+    private Parameters parameters;
+
+    private  boolean processed;
+
     @Override
     public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        log.info("TransactionsRead - Start read()");
-        return "Teste funcional";
+        if(!processed){
+            log.info("TransactionsRead - Start read()");
+            log.info("dddd " + parameters.getFileName());
+            log.info("dddd " + parameters.getFilePath());
+            log.info("dddd " + parameters.getFileUuid());
+            processed = true;
+            return "Teste funcional";
+        }
+        return null;
     }
 }
