@@ -17,6 +17,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	implementation 'org.mongodb:mongo-java-driver'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
