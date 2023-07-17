@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './styles.css';
 import Pagination from './components/Pagination';
 import UploadComponent from './components/UploadComponent';
 
+import transactions from './api/Transactions';
+
 const Table = ({ data }) => {
+
+  const [transactions, setTransactions] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
@@ -80,7 +84,21 @@ const TotalTable = ({ totalDebito, totalCredito, saldo }) => {
   );
 };
 
+const getApiTransactions = async(page, size, name) => {
+  const params = new URLSearchParams();
+  params.append('page', page);
+  params.append('size', size);
+  params.append('name', name);
+
+  return await transactions(params);
+}
+
 const App = () => {
+
+  useEffect(() => {
+    //getApiTransactionsWithoutName(0,10);
+  }, []);
+
   const data = [
     {
       id: 1,
