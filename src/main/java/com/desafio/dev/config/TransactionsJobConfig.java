@@ -3,6 +3,7 @@ package com.desafio.dev.config;
 import com.desafio.dev.domain.processors.TransactionsProcessor;
 import com.desafio.dev.domain.read.TransactionsRead;
 import com.desafio.dev.domain.writer.TransactionsWriter;
+import com.desafio.dev.infrastructure.entity.TransactionEntity;
 import com.desafio.dev.job.TransactionStepListener;
 import com.desafio.dev.job.TransactionsJobListener;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
+
+import java.util.List;
 
 import static com.desafio.dev.utils.ConstantsUtils.*;
 
@@ -53,7 +56,7 @@ public class TransactionsJobConfig {
     @Bean
     public Step step() {
         return stepBuilderFactory.get(DEFAULT_STEP)
-                .<String, String>chunk(1000)
+                .<String, List<TransactionEntity>>chunk(1000)
                 .reader(createTransactionRead())
                 .processor(createTransactionsProcessor())
                 .writer(createTransactionsWriter())
