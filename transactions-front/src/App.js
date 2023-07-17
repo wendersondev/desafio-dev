@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
+import Pagination from './components/Pagination';
 
 const Table = ({ data }) => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // lógica
+  };
+
   return (
     <div className="table-container">
       <table className="my-table">
@@ -36,6 +46,11 @@ const Table = ({ data }) => {
         ))}
       </tbody>
     </table>
+    <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+    />
     </div>
   );
 };
