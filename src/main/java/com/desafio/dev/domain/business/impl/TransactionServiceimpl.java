@@ -24,6 +24,9 @@ public class TransactionServiceimpl implements TransactionService {
                     .TransactionResponse(transactionRepository.findAll(pageable).map(TransactionsResponseMapper::mapper))
                     .build();
         }
+        else {
+
+        }
         return null;
     }
 }
