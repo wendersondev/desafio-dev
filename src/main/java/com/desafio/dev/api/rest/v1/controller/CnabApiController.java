@@ -4,6 +4,10 @@ import com.desafio.dev.api.rest.v1.response.TransactionsResponse;
 import com.desafio.dev.domain.business.TransactionService;
 import com.desafio.dev.domain.business.UploadFileService;
 import com.desafio.dev.domain.helper.JobParameterBuilderHelper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
@@ -27,6 +31,7 @@ import static com.desafio.dev.utils.ConstantsUtils.PATH_UPLOAD;
 @Slf4j
 @RestController
 @RequestMapping("/v1/cnab/transactions")
+@Api("Api de controle de Transações CNAB")
 public class CnabApiController {
 
     @Autowired
@@ -41,8 +46,13 @@ public class CnabApiController {
     @Autowired
     private TransactionService transactionService;
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retona apenas sucesso"),
+            @ApiResponse(code = 400, message = "Retorna uma exception de bath não incializado")
+    })
     @PostMapping("/load")
-    public ResponseEntity<Void> process(@RequestParam("file") MultipartFile file)  {
+    @ApiOperation(value = "Importação de transações por meio de arquivo txt, inicializando o batch")
+    public ResponseEntity<Void> postImportTransactions(@RequestParam("file") MultipartFile file)  {
         try{
             UUID fileName = UUID.randomUUID();
             uploadFileService.upload(file, fileName.toString());
@@ -59,6 +69,10 @@ public class CnabApiController {
         return ResponseEntity.ok().build();
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retorna Lista paginada e outra lista com valores")
+    })
+    @ApiOperation(value = "Lista de transações paginadas e quando buscada pelo nome da empresa retorna tbm objeto com valores")
     @GetMapping
     public ResponseEntity<TransactionsResponse> getTransactions(
             @RequestParam(value = "name", required = false) String name,
