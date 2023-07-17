@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import uploadFile from '../api/UploadFile';
 import TransactionTable from './TransactionTable';
 import BalanceTable from './BalanceTable';
@@ -76,9 +76,13 @@ const Principal = () => {
     setLoading(false);
   };
 
-  if(transactionsA.length < 1) {
-    buildDataTable(0, null);
-  }
+ 
+  useEffect(() => {
+    if (transactionsA.length < 1) {
+      buildDataTable(0, null);
+    }
+  });
+
 
   return (
     <>

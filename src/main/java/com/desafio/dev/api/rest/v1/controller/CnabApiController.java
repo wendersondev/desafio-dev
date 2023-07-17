@@ -65,6 +65,7 @@ public class CnabApiController {
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "10") Integer size
     ) {
+        log.info("getTransactions : {} ", page);
         Pageable pageable = Pageable.ofSize(size).withPage(page);
         return ResponseEntity.ok(transactionService.findTransactions(name, pageable));
     }
