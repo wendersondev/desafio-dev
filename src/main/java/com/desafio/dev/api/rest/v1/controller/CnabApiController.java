@@ -4,7 +4,6 @@ import com.desafio.dev.api.rest.v1.response.TransactionsResponse;
 import com.desafio.dev.domain.business.TransactionService;
 import com.desafio.dev.domain.business.UploadFileService;
 import com.desafio.dev.domain.helper.JobParameterBuilderHelper;
-import com.desafio.dev.utils.Sanitizer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
@@ -13,7 +12,6 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

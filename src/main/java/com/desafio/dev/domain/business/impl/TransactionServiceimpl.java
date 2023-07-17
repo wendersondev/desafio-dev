@@ -5,7 +5,6 @@ import com.desafio.dev.domain.business.TransactionService;
 import com.desafio.dev.domain.mapper.TransactionsResponseMapper;
 import com.desafio.dev.infrastructure.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
