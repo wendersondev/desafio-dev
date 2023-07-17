@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  frontend:
+    build: ./transactions-front
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    network_mode: "host"
+  api:
+    build: .
+    restart: always
+    ports:
+      - "9001:9001"
+    depends_on:
+      - mongodb
+    network_mode: "host"
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    network_mode: "host"
