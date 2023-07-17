@@ -1,5 +1,8 @@
 import React, { useState, useEffect  } from 'react';
 
+import FormatHour from '../format/FormatHour';
+import FormatDate from '../format/FormatDate';
+
 const TransactionTable = ({ data }) => {
     return (
       <>
@@ -24,11 +27,11 @@ const TransactionTable = ({ data }) => {
         {data.map((item) => (
           <tr key={item.id}>
             <td>{item.id}</td>
-            <td>{item.date}</td>
+            <td>{FormatDate(item.date)}</td>
             <td>{item.value?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</td>
             <td>{item.cpf}</td>
             <td>{item.cardNumber}</td>
-            <td>{item.hour}</td>
+            <td>{FormatHour(item.hour)}</td>
             <td>{item.onwnerStore}</td>
             <td>{item.nameStore}</td>
             <td>{item.typeTransaction}</td>
