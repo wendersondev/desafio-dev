@@ -82,15 +82,15 @@ next-env.d.ts
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+/transactions-front/node_modules
+/transactions-front/.pnp
 .pnp.js
 
 # testing
-/coverage
+/transactions-front/coverage
 
 # production
-/build
+/transactions-front/build
 
 # misc
 .DS_Store

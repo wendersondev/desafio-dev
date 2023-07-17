@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 @Builder
 public class TransactionsResponse {
 
-    private Page<TransactionResponse> TransactionResponse;
+    private Page<TransactionResponse> transactionResponse;
     private TransactionBalanceResponse balanceResponse;
 
 }
