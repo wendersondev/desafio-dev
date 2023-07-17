@@ -1,9 +1,9 @@
 import React, { useState, useEffect  } from 'react';
 
 const TransactionTable = ({ data }) => {
-
     return (
-      <>  
+      <>
+      <h2>Tabela de Transações</h2>  
       <div className="table-container">
       <table className="my-table">
       <thead>
@@ -25,7 +25,7 @@ const TransactionTable = ({ data }) => {
           <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.date}</td>
-            <td>{item.value}</td>
+            <td>{item.value?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</td>
             <td>{item.cpf}</td>
             <td>{item.cardNumber}</td>
             <td>{item.hour}</td>
