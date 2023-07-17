@@ -21,13 +21,18 @@ Execute o comando:
 docker-compose up -d
 ```
 
-## Como acessar
+## Como acessar documentação e frontend
 Uma vez que o projeo esteja rodando corretamente, abra seu navegador e acesso a url
 ```
-http://localhost:9001//swagger-ui.html
+http://localhost:9001/swagger-ui.html#/
 ```
-
 Uma inteface do Swagger será exibida para que você possa navegar entre os endpoint criados
+
+
+frontend
+```
+http://localhost:3000
+```
 
 ## Endpoints via curl
 - Importação de dados

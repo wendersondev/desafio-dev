@@ -13,7 +13,7 @@ public class TransactionEntityFactory {
         return Arrays.asList(
                 TransactionEntity
                         .builder()
-                        .id(id)
+                        .id(1L)
                         .nameStore("Store 1")
                         .value(Double.valueOf("100"))
                         .typeTransaction(TransactionType.BOLETO.name())
@@ -27,7 +27,7 @@ public class TransactionEntityFactory {
                         .build(),
                 TransactionEntity
                         .builder()
-                        .id(id)
+                        .id(2L)
                         .nameStore("Store 1")
                         .value(Double.valueOf("100"))
                         .typeTransaction(TransactionType.CREDITO.name())
@@ -42,7 +42,7 @@ public class TransactionEntityFactory {
 
                 TransactionEntity
                         .builder()
-                        .id(id)
+                        .id(3L)
                         .nameStore("Store 3")
                         .value(Double.valueOf("300"))
                         .typeTransaction(TransactionType.CREDITO.name())

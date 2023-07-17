@@ -8,7 +8,7 @@ public class TransactionsResponseMapper {
     public static TransactionResponse mapper(TransactionEntity entity) {
         return TransactionResponse
                 .builder()
-                .id(entity.getId())
+                .id(entity.getId().toString())
                 .cpf(entity.getCpf())
                 .value(entity.getValue())
                 .hour(entity.getHour())

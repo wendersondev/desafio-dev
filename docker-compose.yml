@@ -14,10 +14,12 @@ services:
     ports:
       - "9001:9001"
     depends_on:
-      - mongodb
+      - mysql
     network_mode: "host"
-  mongodb:
-    image: mongo:6-jammy
+  mysql:
+    image: mysql:5.7
     ports:
-      - '27017:27017'
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
     network_mode: "host"

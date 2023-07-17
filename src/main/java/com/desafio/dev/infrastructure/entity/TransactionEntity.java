@@ -1,19 +1,21 @@
 package com.desafio.dev.infrastructure.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collection = "transactions")
+@Table(name = "transactions")
+@Entity
 public class TransactionEntity {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String date;
     private Double value;
     private String cpf;
