@@ -32,13 +32,14 @@ Uma inteface do Swagger será exibida para que você possa navegar entre os endp
 ## Endpoints via curl
 - Importação de dados
 ```bash
-docker-compose up -d
+curl --location 'http://localhost:9001/v1/cnab/transactions/load' \
+--form 'file=@"/home/wenderson/desafio-dev/CNAB.txt"'
 ```
 - Consulta de dados sem o nome da loja
 ```bash
-docker-compose up -d
+curl --location 'http://localhost:9001/v1/cnab/transactions?page=0&size=10'
 ```
 - Consulta de dados com o nome da loja
 ```bash
-docker-compose up -d
+curl --location 'http://localhost:9001/v1/cnab/transactions?page=0&size=10&name=BAR%20DO%20JO%C3%83O'
 ```
