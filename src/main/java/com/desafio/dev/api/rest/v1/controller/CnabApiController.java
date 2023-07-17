@@ -1,5 +1,7 @@
 package com.desafio.dev.api.rest.v1.controller;
 
+import com.desafio.dev.api.rest.v1.response.TransactionsResponse;
+import com.desafio.dev.domain.business.TransactionService;
 import com.desafio.dev.domain.business.UploadFileService;
 import com.desafio.dev.domain.helper.JobParameterBuilderHelper;
 import com.desafio.dev.utils.Sanitizer;
@@ -11,11 +13,10 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -38,6 +39,9 @@ public class CnabApiController {
     @Autowired
     private UploadFileService uploadFileService;
 
+    @Autowired
+    private TransactionService transactionService;
+
     @PostMapping("/load")
     public ResponseEntity<Void> process(@RequestParam("file") MultipartFile file)  {
         try{
@@ -54,6 +58,16 @@ public class CnabApiController {
             log.error("Job not started, status {} ", e.getMessage());
         }
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<TransactionsResponse> getTransactions(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size", defaultValue = "10") Integer size
+    ) {
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        return ResponseEntity.ok(transactionService.findTransactions(name, pageable));
     }
 
 }

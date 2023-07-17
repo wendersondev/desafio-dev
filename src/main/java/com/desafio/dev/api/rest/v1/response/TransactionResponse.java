@@ -1,18 +1,14 @@
-package com.desafio.dev.infrastructure.entity;
+package com.desafio.dev.api.rest.v1.response;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collection = "transactions")
-public class TransactionEntity {
+public class TransactionResponse {
 
-    @Id
     private String id;
     private String date;
     private Double value;
@@ -22,6 +18,5 @@ public class TransactionEntity {
     private String onwnerStore;
     private String nameStore;
     private String typeTransaction;
-    private Double valueTypeTransaction;
-    private String operation;
+
 }
