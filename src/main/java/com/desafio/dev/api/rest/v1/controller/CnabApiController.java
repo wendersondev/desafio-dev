@@ -22,6 +22,7 @@ import java.util.*;
 
 import static com.desafio.dev.utils.ConstantsUtils.PATH_UPLOAD;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 @Slf4j
 @RestController

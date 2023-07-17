@@ -18,5 +18,6 @@ public class TransactionResponse {
     private String onwnerStore;
     private String nameStore;
     private String typeTransaction;
+    private String operation;
 
 }

@@ -17,6 +17,7 @@ public class TransactionsResponseMapper {
                 .typeTransaction(entity.getTypeTransaction())
                 .nameStore(entity.getNameStore())
                 .onwnerStore(entity.getOnwnerStore())
+                .operation(entity.getOperation())
                 .build();
     }
 

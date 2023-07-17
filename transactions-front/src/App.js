@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import Pagination from './components/Pagination';
+import UploadComponent from './components/UploadComponent';
 
 const Table = ({ data }) => {
 
@@ -13,6 +14,8 @@ const Table = ({ data }) => {
   };
 
   return (
+    <>
+    <UploadComponent />
     <div className="table-container">
       <table className="my-table">
       <thead>
@@ -52,6 +55,7 @@ const Table = ({ data }) => {
         onPageChange={handlePageChange}
     />
     </div>
+    </>
   );
 };
 
